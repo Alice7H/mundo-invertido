@@ -66,11 +66,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-body {
-  background: var(--page-background);
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 95px;
 }
-
 h1,
 h2,
 h3 {
@@ -112,7 +113,7 @@ main::before {
   height: 100%;
   position: absolute;
   background: var(--page-background) no-repeat,
-    url("./assets/images/backgrounds/florest.png") no-repeat;
+    url("../src/assets/images/backgrounds/florest.png") no-repeat;
   background-size: cover;
   z-index: -1;
 }
@@ -134,4 +135,25 @@ input:focus-visible,
 textarea:focus-visible {
   outline: none;
   border-color: black;
+}
+
+@media (min-width: 768px) {
+  h1,
+  h2,
+  h3 {
+    font-size: 3rem;
+  }
+  section {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1200px;
+  }
+  footer p {
+    max-width: 700px;
+  }
 }
