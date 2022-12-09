@@ -1,16 +1,16 @@
 import { ReactComponent as Logo } from '../../assets/images/banner/logo.svg';
-import audio from '../../assets/musics/normal-world.mpeg';
 import './styles.css';
 
 interface IHeader {
   handleChangeTheme: () => void;
+  sourceAudio: string;
 }
 
-export default function Header({ handleChangeTheme }: IHeader) {
+export default function Header({ handleChangeTheme, sourceAudio }: IHeader) {
   return (
     <header>
-    <audio id="audio" autoPlay>
-      <source src={audio} type="audio/mpeg" />
+    <audio id="audio">
+      <source src={sourceAudio} type="audio/mpeg" />
       I'm sorry; your browser doesn't support HTML audio.
     </audio>
     <div className="header-content">
