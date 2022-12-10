@@ -58,6 +58,11 @@
   color: var(--field-background-color);
 }
 
+#section-form .error-text {
+  color: var(--primary-color-contrast);
+  margin-bottom: 20px;
+}
+
 @media (min-width: 768px) {
   #section-form .form-content {
     flex-direction: row;

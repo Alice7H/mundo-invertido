@@ -1,6 +1,35 @@
+import { useForm } from 'react-hook-form';
+import Input from '../Input';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import './styles.css';
 
+export interface IForm {
+  name: string,
+  email: string,
+  level: number,
+  character: string,
+}
+
+const schema = yup.object({
+  name: yup.string().required('Nome obrigatório'),
+  email: yup.string().email('E-mail inválido').required('E-mail obrigatório'),
+  level: yup.number().positive('O número deve ser maior que 0').integer('O valor deve ser inteiro').required('Level obrigatório'),
+  character: yup.string().required('Personagem obrigatório'),
+}).required();
+
 export default function Form() {
+  const { register, handleSubmit, formState: { errors, isValid } } = useForm<IForm>({
+    resolver: yupResolver(schema),
+    mode: "onBlur"
+  });
+
+  const onSubmit = (data: IForm) => {
+    if(isValid) {
+      alert(JSON.stringify(data));
+    }
+  };
+
   return (
     <section id="section-form" className="container">
       <h2>O Clube Dungeons & Dragons</h2>
@@ -16,18 +45,36 @@ export default function Form() {
         <h3>Entre para o clube de D&D e tenha experiências de <span>outro mundo</span></h3>
 
         <div className="form-container">
-          <form id="formSubmitSubscriber">
-            <label htmlFor="name">Nome Completo</label>
-            <input type="text" name="name" id="txtName" required />
+          <form id="formSubmitSubscriber" onSubmit={handleSubmit(onSubmit)}>
+          <Input
+            label="name"
+            text="Nome completo"
+            register={register}
+            required
+            errorMessage={errors.name?.message}
+          />
 
-            <label htmlFor="email">E-mail</label>
-            <input type="email" name="email" id="txtEmail" required />
+          <Input
+            label="email"
+            text="E-mail"
+            register={register}
+            required
+            errorMessage={errors.email?.message}
+          />
 
-            <label htmlFor="level">Level</label>
-            <input type="number" name="level" id="txtLevel" required />
+          <Input
+            label="level"
+            text="Level"
+            register={register}
+            type="number"
+            min={1}
+            required
+            errorMessage={errors.level?.message}
+          />
 
-            <label htmlFor="character">Personagem</label>
-            <textarea name="character" cols={30} rows={10} id="txtCharacter" required></textarea>
+          <label htmlFor="character">Personagem</label>
+          <textarea cols={30} rows={10} {...register("character")} id="txtCharacter" required></textarea>
+          { errors.character && <span className="error-text">{errors.character?.message}</span>}
 
             <button type="submit" id="btnSubscribe">Me inscrever</button>
           </form>
