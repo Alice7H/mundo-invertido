@@ -21,3 +21,14 @@ Uma jornada para quem não tem medo do desconhecido. O projeto Mundo Invertido �
 - TypesScript
 - Create-React-App
 - Firebase
+
+## Tarefas
+
+- Criar componentes
+- Estilizar
+- Fazer função para trocar tema
+- Fazer função para trocar audio
+- Validar formulário
+- Adicionar e configurar firebase
+- Criar função para adicionar usuário
+- Fazer integração com firebase

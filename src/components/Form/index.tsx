@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import Input from '../Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { subscribeHellfireClub } from '../../services/api';
 import './styles.css';
 
 export interface IForm {
@@ -19,14 +20,26 @@ const schema = yup.object({
 }).required();
 
 export default function Form() {
-  const { register, handleSubmit, formState: { errors, isValid } } = useForm<IForm>({
+  const { register, reset, handleSubmit, formState: { errors, isValid } } = useForm<IForm>({
     resolver: yupResolver(schema),
     mode: "onBlur"
   });
 
   const onSubmit = (data: IForm) => {
     if(isValid) {
-      alert(JSON.stringify(data));
+      const subscription = {
+        character: data.character,
+        email: data.email,
+        level: data.level.toString(),
+        name: data.name,
+      }
+      subscribeHellfireClub(subscription)
+        .then(subscriptionId => {
+          alert(`Usuário ${subscriptionId} salvo com sucesso!`);
+          reset();
+        }).catch(err => {
+          console.error(`Usuário não cadastrado. Erro ${err}`);
+        });
     }
   };
 
@@ -76,7 +89,7 @@ export default function Form() {
           <textarea cols={30} rows={10} {...register("character")} id="txtCharacter" required></textarea>
           { errors.character && <span className="error-text">{errors.character?.message}</span>}
 
-            <button type="submit" id="btnSubscribe">Me inscrever</button>
+            <button type="submit" id="btnSubscribe" disabled={!isValid}>Me inscrever</button>
           </form>
         </div>
       </div>

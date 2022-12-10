@@ -58,6 +58,12 @@
   color: var(--field-background-color);
 }
 
+#section-form .form-container form button:disabled {
+  background-color: var(--primary-color-contrast);
+  color: var(--field-background-color);
+  cursor: not-allowed;
+}
+
 #section-form .error-text {
   color: var(--primary-color-contrast);
   margin-bottom: 20px;
