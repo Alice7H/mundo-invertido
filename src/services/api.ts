@@ -1,5 +1,5 @@
 import app from './app';
-import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 interface HellfireClub {
   character: string,

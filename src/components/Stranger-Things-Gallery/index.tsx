@@ -9,7 +9,7 @@ export default function StrangerThingsGallery() {
     <section id="section-stranger-things-gallery">
     <div className="container section-text">
       <h2>A segunda série mais assistida da Netflix</h2>
-      <ul className="gallery-container" role="gallery">
+      <ul className="gallery-container">
         <li className="gallery-image invert-element">
           <img src={serieImage1} alt="Imagem de Vecna" />
         </li>

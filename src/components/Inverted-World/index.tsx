@@ -6,7 +6,7 @@ export default function InvertedWorld() {
     <section id="section-inverted-world" className="container">
       <div className="section-texts">
         <h1>O Mundo Invertido</h1>
-        <p role="text">
+        <p>
           O Mundo Invertido parece uma cópia do nosso mundo, mas com criaturas horrendas, tempestades assustadoras, muita escuridão e entidades malignas. Um reino controlado por Vecna, que tem planos de trazer tudo isso ao nosso mundo.
         </p>
       </div>

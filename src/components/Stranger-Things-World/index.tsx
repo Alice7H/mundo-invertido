@@ -11,12 +11,11 @@ export default function StrangerThingsWorld() {
           title="Youtube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-          frameBorder="0"
         ></iframe>
       </div>
       <div className="section-texts">
         <h2>Stranger Things Vol. 4</h2>
-        <p role="text">
+        <p>
           Mais experientes, os heróis de Stranger Things também precisam
           enfrentar desafios maiores do que nunca e fazer decisões que vão
           mudar suas vidas para sempre. Confira ao lado o trailer da quarta
